@@ -6,9 +6,9 @@ function preload() {
 
 }
 
-
 function setup() {
   createCanvas(320, 480);
+  // frameRate(25)
 
 }
 
