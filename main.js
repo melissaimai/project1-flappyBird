@@ -14,6 +14,7 @@ function setup() {
 
 function draw() {
   game.draw()
+  game.pipesUpdate()
 }
 
 function keyPressed() {

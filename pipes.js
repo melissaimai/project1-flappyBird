@@ -1,50 +1,31 @@
 class Pipes {
   constructor() {
+    this.velocity = 2.5;
+    this.gap = 200;
     this.width = 52
-    this.height = 400
-    this.passou100Frames
-    this.flappy = new Flappy()
+    this.height = 200
 
-    this.pares = [
-      {
-        x: 200,
-        y: -100
-      },
-      {
-        x: 100,
-        y: 100
-      }
-    ];
+    this.x = 400;
+    this.y;
 
-    this.spaceBetweenPipes = 80
-    this.Yrandom = -150
+    // createCanvas(320, 480);
 
-    //Sky pipe
-    this.pipeSkyX = 220
-    this.pipeSkyY = this.Yrandom
-
-    //Floor pipe
-    this.pipeFloorX = 220
-    this.pipeFloorY = this.height + this.spaceBetweenPipes + this.Yrandom
-
-
+    this.topPosition
   }
+
+  y = Math.floor(Math.random(100, 480));
+  topPosition = this.y - this.height - this.gap
+
 
   draw() {
-    if (frameCount % 100 === 0) {
-      console.log('oeee')
-    }
-
-    this.pares.forEach((par) => {
-      //Sky pipe
-      image(game.pipeTopImg,
-        par.x, this.pipeSkyY,
-        this.width, this.height);
-
-      //Floor pipe
-      image(game.pipeBottomImg,
-        par.x, this.pipeFloorY,
-        this.width, this.height);
-    })
+    image(game.pipeTopImg, this.x, this.y, this.width, this.height);
+    image(game.pipeBottomImg, this.x, this.topPosition, this.width, this.height);
   }
+
+  update() {
+    this.x = this.x - this.velocity;
+  };
+  isOff() {
+    return this.x < -this.width;
+  };
 }
